@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main role="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 m-auto pt-4">
+                <p>{{ object.text }}</p>
+            </div>
+            <div class="col-md-10 m-auto pt-4">
+
+                <table class="table text-center table-bordered">
+                    <colgroup>
+                        <col class="table-success" />
+                        <col class="table-warning" />
+                        <col class="table-danger" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Most Frequent Words</th>
+                            <th>Average Frequency Words</th>
+                            <th>Least Frequent Words</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                {% for word, freq in object.most_frequent.items %}
+                                <p>{{ word }} => {{ freq }}</p>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for word, freq in object.average_frequency.items %}
+                                <p>{{ word }} => {{ freq }}</p>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for word, freq in object.least_frequent.items %}
+                                <p>{{ word }} => {{ freq }}</p>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
